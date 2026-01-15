@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMonitoring - Website Uptime Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 10C4 10 5.6 10 6 6C6.4 2 8 2 8 2" stroke="#0029FF" stroke-width="3" stroke-linecap="round"/>
+                <path d="M10 14C10 14 11.6 14 12 10C12.4 6 14 6 14 6" stroke="#0029FF" stroke-width="3" stroke-linecap="round"/>
+                <path d="M16 18C16 18 17.6 18 18 14C18.4 10 20 10 20 10" stroke="#0029FF" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>WebMonitoring<sup style="font-size: 10px;">®</sup></span>
+        </div>
+        <button class="btn-nav" onclick="showDashboard()">Get Started</button>
+    </nav>
+
+    <main id="homePage">
+        
+        <section class="hero">
+            <h1 class="hero-title">Stay Ahead with Instant Downtime Alerts. </h1>
+            <p class="hero-subtitle">Get notified when your website is Unreachable.</p>
+            
+            <div class="hero-image-container">
+                <img src="https://cdn.odzre.my.id/hxq.jpg" alt="Monitoring Illustration" class="hero-img">
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">Features</h2>
+            
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <h3>Track</h3>
+                <p>Monitor your website's reachability in real-time with high precision checking.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                </div>
+                <h3>Notify</h3>
+                <p>Get instant browser alerts and notifications immediately on critical issues.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                    </svg>
+                </div>
+                <h3>Optimize</h3>
+                <p>Continuously improve your website stability based on uptime reports.</p>
+            </div>
+        </section>
+
+        <section class="docs">
+            <h2 class="section-title">Documentation</h2>
+            <div class="doc-content">
+                <div class="doc-item">
+                    <h4>What is WebMonitoring?</h4>
+                    <p>WebMonitoring is a client-side monitoring tool that checks the status of your websites via an API proxy. It helps developers and site owners ensure their services are online.</p>
+                </div>
+                <div class="doc-item">
+                    <h4>How it Works</h4>
+                    <p>1. Click <b>Get Started</b> to enter the dashboard.<br>
+                       2. Enter your website URL (e.g., <i>example.com</i>).<br>
+                       3. The system sends a request every 60 seconds.<br>
+                       4. If the status code is not 200 (OK), you will receive an alert.</p>
+                </div>
+                <div class="doc-item">
+                    <h4>Privacy</h4>
+                    <p>Your data is stored locally in your browser (LocalStorage). We do not store your monitored URLs on our servers.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p>© 2026 WebMonitoring. All rights reserved.</p>
+            <p class="credit">Developed by <span class="highlight">SANN404 FORUM</span></p>
+        </footer>
+    </main>
+
+    <div id="dashboardPage" class="dashboard-hidden">
+        
+        <div id="toast-container"></div>
+
+        <div class="main-container">
+            <header class="header">
+                <div class="header-top">
+                    <button class="btn-back" onclick="showHome()">← Back</button>
+                    <div class="brand">
+                        <span>WebMonitoring Dashboard</span>
+                    </div>
+                </div>
+                <div class="user-welcome">
+                    <h1>Monitoring Overview</h1>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="card stat-card-blue">
+                    <h3>Total Websites</h3>
+                    <span class="stat-number" id="totalCount">0</span>
+                    <p class="stat-desc">Monitored websites</p>
+                </div>
+                
+                <div class="card stat-card-white">
+                    <h3>Websites Online</h3>
+                    <span class="stat-number text-success" id="onlineCount">0</span>
+                    <p class="stat-desc">Currently up and running</p>
+                </div>
+
+                <div class="card stat-card-white">
+                    <h3>Websites Offline</h3>
+                    <span class="stat-number text-danger" id="offlineCount">0</span>
+                    <p class="stat-desc">Need attention</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="card chart-card">
+                    <h3>Website Status</h3>
+                    <div class="pie-chart-container">
+                        <div class="pie-chart" id="statusPie"></div>
+                        <div class="pie-legend">
+                            <div class="legend-item"><span class="dot up"></span> Up <span id="legendUp">100%</span></div>
+                            <div class="legend-item"><span class="dot down"></span> Down <span id="legendDown">0%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card chart-card">
+                    <h3>Response Times (ms)</h3>
+                    <div class="bar-chart-container" id="barChart">
+                        <div class="placeholder-text">Add websites to see data</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card add-card">
+                <div class="add-header">
+                    <span class="add-label">ADD WEBSITE</span>
+                    <h2>Monitor New Website</h2>
+                    <p>Enter a URL to add a new website to your monitoring list.</p>
+                </div>
+                
+                <div class="input-wrapper">
+                    <div class="input-icon">🌐</div>
+                    <input type="text" id="urlInput" placeholder="https://example.com" autocomplete="off">
+                </div>
+
+                <button id="addBtn" onclick="addWebsite()">Add Website</button>
+            </div>
+
+            <div class="card list-card">
+                <h2>Your Websites</h2>
+                <div class="table-header">
+                    <span>Website</span>
+                    <div class="header-actions">
+                        <span>Status</span>
+                        <span>Actions</span>
+                    </div>
+                </div>
+                
+                <div id="websiteList" class="website-list">
+                    <div class="empty-state">No websites added yet.</div>
+                </div>
+            </div>
+            
+            <footer class="dashboard-footer">
+                <p>SANN404 FORUM PRODUCTION</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
